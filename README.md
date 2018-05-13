@@ -1,0 +1,2 @@
+# gradle_kotlin_dsl
+通过kotlin dsl的gradle来管理kotlin工程
