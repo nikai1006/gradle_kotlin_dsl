@@ -37,7 +37,9 @@ tasks.withType<KotlinCompile> {
 }
 
 fun createDir(path: String) {
-    val filePth = path ?: ""
+    val dir = File(path)
+    if (!dir.exists())
+        dir.mkdirs()
 
 }
 
@@ -45,6 +47,9 @@ fun createDir(path: String) {
 task("makeJavaDir", {
     doFirst {
         println("make java dirs")
+        val paths = arrayListOf<String>("src/main/java", "src/main/resources", "src/test/java", "src/test/resources")
+        for (path in paths)
+            createDir(path)
     }
 })
 
@@ -52,6 +57,10 @@ task("makeJavaDir", {
 task("makeWebDir", {
     doLast {
         println("make web dirs")
+        val paths = arrayListOf<String>("src/main/webapp")
+        paths.forEach {
+            createDir(it)
+        }
     }
 }).dependsOn("makeJavaDir")
 
