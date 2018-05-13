@@ -47,7 +47,7 @@ fun createDir(path: String) {
 task("makeJavaDir", {
     doFirst {
         println("make java dirs")
-        val paths = arrayListOf<String>("src/main/java", "src/main/resources", "src/test/java", "src/test/resources")
+        val paths = arrayListOf<String>("src/main/java", "src/main/kotlin", "src/main/resources", "src/test/java","src/test/kotlin", "src/test/resources")
         for (path in paths)
             createDir(path)
     }
